@@ -1,0 +1,31 @@
+<VirtualHost *:80>
+    ServerName potobooth.local
+    DocumentRoot /home/dii/aplikasi/ProjectFreelance/potobooth/public
+
+    <Directory /home/dii/aplikasi/ProjectFreelance/potobooth/public>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/potobooth_error.log
+    CustomLog ${APACHE_LOG_DIR}/potobooth_access.log combined
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName potobooth.local
+    DocumentRoot /home/dii/aplikasi/ProjectFreelance/potobooth/public
+
+    SSLEngine on
+    SSLCertificateFile /etc/apache2/ssl/potobooth.local.pem
+    SSLCertificateKeyFile /etc/apache2/ssl/potobooth.local-key.pem
+
+    <Directory /home/dii/aplikasi/ProjectFreelance/potobooth/public>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+
+    ErrorLog ${APACHE_LOG_DIR}/potobooth_ssl_error.log
+    CustomLog ${APACHE_LOG_DIR}/potobooth_ssl_access.log combined
+</VirtualHost>
